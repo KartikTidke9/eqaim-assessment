@@ -67,6 +67,22 @@ class FeedbackController {
     }
   }
 
+  //...........................Delete feedback.....................................................
+  static async deleteFeedback(req, res) {
+    try {
+      const { id } = req.params;
+
+      if (!id) {
+        throw new Error("id param is required!");
+      }
+
+      const deletedFeedback = await feedbackModel.findByIdAndDelete(id);
+      res.status(201).json(deletedFeedback);
+    } catch (err) {
+      res.status(401).json({ message: err.message });
+    }
+  }
+
   //...........................Fetch feedback details by id...............................................
   static async fetchFeedbackById(req, res) {
     try {

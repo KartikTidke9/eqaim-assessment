@@ -10,6 +10,9 @@ router.post("/new", FeedbackController.addFeedback);
 //update the feedback
 router.put("/update/:id", FeedbackController.updateFeedback);
 
+//delete the feedback
+router.delete("/delete/:id", FeedbackController.deleteFeedback);
+
 //fetch feedback details
 router.get("/:id", FeedbackController.fetchFeedbackById);
 

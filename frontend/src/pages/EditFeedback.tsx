@@ -1,9 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import FormControl from "../components/FormControl";
 import Dropdown from "../components/Dropdown";
 import { Data } from "../components/FeedbackBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useThunk } from "../hooks/useThunk";
+import { deleteFeedback, updateFeedback } from "../store";
 
 const data: Data[] = [
   { id: 1, label: "Feature" },
@@ -21,20 +23,46 @@ const statusData: Data[] = [
 ];
 
 function EditFeedback() {
-  const [selectedCategory, setSelectedCategory] = useState<Data>(data[0]);
-  const [selectedStatus, setSelectedStatus] = useState<Data>(statusData[1]);
-  const [title, setTitle] = useState({ title: "", error: "" });
-  const [detail, setDetail] = useState({ detail: "", error: "" });
+  const { state } = useLocation();
+  const [selectedCategory, setSelectedCategory] = useState<Data>(
+    data.find((d) => d.label === state.category) || data[0]
+  );
+  const [selectedStatus, setSelectedStatus] = useState<Data>(
+    statusData.find((d) => d.label === state.status) || statusData[0]
+  );
+  const [title, setTitle] = useState({ title: state.title, error: "" });
+  const [detail, setDetail] = useState({
+    detail: state.description,
+    error: "",
+  });
+  const [
+    doUpdateFeedback,
+    loadingUpdateFeedback,
+    errorLoadingUpdatFeedback,
+    resetErrorUpdateFeedback,
+    isDoUpdateFeedbackRan,
+  ] = useThunk(updateFeedback);
+
+  const [
+    doDeleteFeedback,
+    loadingDeleteFeedback,
+    errorLoadingDeleteFeedback,
+    ,
+    isDoDeleteFeedbackRan,
+  ] = useThunk(deleteFeedback);
 
   const navigate = useNavigate();
 
   const handleAddFeedback = () => {
     const data = {
-      category: selectedCategory,
-      status: selectedStatus,
-      title,
-      detail,
+      category: selectedCategory.label,
+      status: selectedStatus.label,
+      title: title.title,
+      description: detail.detail,
+      id: state._id,
     };
+
+    if (!state._id) return;
 
     if (!title.title) {
       setTitle({ ...title, error: "title cannot be empty!" });
@@ -43,14 +71,29 @@ function EditFeedback() {
 
     if (!detail.detail) {
       setDetail({ ...detail, error: "title cannot be empty!" });
-      return
+      return;
     }
+    //@ts-ignore
+    doUpdateFeedback(data);
 
-    setTitle({ title: "", error: "" });
-    setDetail({ detail: "", error: "" });
-
-    console.log(data);
+    if (!errorLoadingUpdatFeedback) {
+      setTitle({ title: "", error: "" });
+      setDetail({ detail: "", error: "" });
+    }
   };
+
+  useEffect(() => {
+    (isDoUpdateFeedbackRan || isDoDeleteFeedbackRan) &&
+      navigate("/suggestions");
+  }, [isDoUpdateFeedbackRan, isDoDeleteFeedbackRan, navigate]);
+
+  useEffect(() => {
+    if (!errorLoadingUpdatFeedback) return;
+    const timer = setTimeout(resetErrorUpdateFeedback as () => void, 3000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [errorLoadingUpdatFeedback, resetErrorUpdateFeedback]);
 
   return (
     <div className="absolute inset-x-[35%] my-10 flex flex-col ">
@@ -166,12 +209,27 @@ function EditFeedback() {
         </div>
 
         {/* action buttons */}
+        {(errorLoadingUpdatFeedback as boolean) && (
+          <p className="text-xs text-red-500">
+            {String(errorLoadingUpdatFeedback)}
+          </p>
+        )}
+        {(errorLoadingDeleteFeedback as boolean) && (
+          <p className="text-xs text-red-500">
+            {String(errorLoadingDeleteFeedback)}
+          </p>
+        )}
         <div className="flex items-center justify-between mt-6">
           <div>
             <Button
               label="Delete"
               className="px-4 py-1 rounded-lg bg-[#D73737] hover:bg-color-9"
               labelClasses="font-bold text-color-4 text-xs"
+              onClick={() => {
+                //@ts-ignore
+                doDeleteFeedback(state._id);
+              }}
+              disabled={loadingDeleteFeedback as boolean}
             />
           </div>
           <div className="flex justify-end gap-4">
@@ -183,9 +241,10 @@ function EditFeedback() {
             />
             <Button
               onClick={handleAddFeedback}
-              label="Add Feedback"
+              label={loadingUpdateFeedback ? "Adding..." : "Add Feedback"}
               className="px-4 py-1 rounded-lg bg-color-1 hover:bg-color-11"
               labelClasses="font-bold text-color-4 text-xs"
+              disabled={loadingUpdateFeedback as boolean}
             />
           </div>
         </div>

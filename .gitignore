@@ -2,7 +2,6 @@
 
 # dependencies
 /frontend/node_modules
-/frontend/src/assets
 /backend/node_modules
 /frontend/.env
 /backend/.env
