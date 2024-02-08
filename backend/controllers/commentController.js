@@ -5,17 +5,35 @@ class CommentController {
   //...........................Add comment.....................................................
   static async addComment(req, res) {
     try {
-      const { content, user, id } = req.body;
+      const {
+        content,
+        user: { image, name, username },
+        id,
+      } = req.body;
 
-      if (!content || !user) {
+      if (!content) {
         throw new Error("content cannot be empty");
+      }
+
+      if (content.length > 250) {
+        throw new Error("content msg cannot be more than 250 characters");
+      }
+
+      if (!image || !name || !username) {
+        throw new Error(
+          "user object needs to have name, image & username fields"
+        );
       }
 
       const comment = new commentModel({
         content,
-        user,
+        user: {
+          image,
+          name,
+          username,
+        },
       });
-      await feedback.save();
+      await comment.save();
 
       await feedbackModel.findByIdAndUpdate(id, {
         $push: { comments: comment._id },
@@ -27,33 +45,53 @@ class CommentController {
     }
   }
 
-  //...........................Edit comment.....................................................
-//   static async updateFeedback(req, res) {
-//     try {
-//       const { title, description, category, status } = req.body;
-//       const { id } = req.params;
+  //...........................Reply to comment.....................................................
+  static async addReply(req, res) {
+    try {
+      const {
+        content,
+        user: { image, name, username },
+        replyingTo,
+        id,
+      } = req.body;
 
-//       if (!id) {
-//         throw new Error("id param is required!");
-//       }
+      if (!content) {
+        throw new Error("content cannot be empty");
+      }
 
-//       if (!title || !description || !category || !status) {
-//         throw new Error("fields can't be empty");
-//       }
+      if (content.length > 250) {
+        throw new Error("content msg cannot be more than 250 characters");
+      }
 
-//       const updatedFeedback = await feedbackModel.findByIdAndUpdate(
-//         id,
-//         {
-//           $set: { title, description, category, status },
-//         },
-//         { new: true }
-//       );
+      if (!image || !name || !username) {
+        throw new Error(
+          "user object needs to have name, image & username fields"
+        );
+      }
 
-//       res.status(201).json(updatedFeedback);
-//     } catch (err) {
-//       res.status(401).json({ message: err.message });
-//     }
-//   }
+      const comment = await commentModel.findByIdAndUpdate(
+        id,
+        {
+          $push: {
+            replies: {
+              content,
+              replyingTo,
+              user: {
+                image,
+                name,
+                username,
+              },
+            },
+          },
+        },
+        { new: true }
+      );
+
+      res.status(201).json(comment);
+    } catch (err) {
+      res.status(401).json({ message: err.message });
+    }
+  }
 }
 
 export { CommentController };

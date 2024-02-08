@@ -1,5 +1,8 @@
 import { feedbackModel } from "../models/feedbackModel.js";
 
+const Categories = ["Feature", "UI", "UX", "Enhancement", "Bug"];
+const Statuses = ["Suggestion", "Planned", "In-Progress", "Live"];
+
 class FeedbackController {
   //...........................Add new feedback.....................................................
   static async addFeedback(req, res) {
@@ -8,6 +11,10 @@ class FeedbackController {
 
       if (!title || !description || !category) {
         throw new Error("fields can't be empty");
+      }
+
+      if (!Categories.includes(category)) {
+        throw new Error("category can only be one of " + Categories.join(", "));
       }
 
       const feedback = new feedbackModel({
@@ -38,6 +45,14 @@ class FeedbackController {
         throw new Error("fields can't be empty");
       }
 
+      if (!Categories.includes(category)) {
+        throw new Error("category can only be one of " + Categories.join(", "));
+      }
+
+      if (!Statuses.includes(status)) {
+        throw new Error("status can only be one of " + Statuses.join(", "));
+      }
+
       const updatedFeedback = await feedbackModel.findByIdAndUpdate(
         id,
         {
@@ -51,6 +66,44 @@ class FeedbackController {
       res.status(401).json({ message: err.message });
     }
   }
+
+  //...........................Fetch feedback details by id...............................................
+  static async fetchFeedbackById(req, res) {
+    try {
+      const { id } = req.params;
+      const feedback = await feedbackModel.findById(id).populate("comments");
+
+      res.status(201).json(feedback);
+    } catch (err) {
+      res.status(401).json({ message: err.message });
+    }
+  }
+
+  //...........................Fetch feedback.....................................................
+  //fetch all feedback which have status "Suggestion"
+  static async fetchFeedbacksWithStatusSuggestion(req, res) {
+    try {
+      const feedbacks = await feedbackModel.find({ status: "Suggestion" });
+
+      res.status(201).json(feedbacks);
+    } catch (err) {
+      res.status(401).json({ message: err.message });
+    }
+  }
+
+  //...........................Fetch All feedbacks.....................................................
+  //fetch all feedback which don't have status of "Suggestion"
+  static async fetchFeedbacksWithoutStatusSuggestion(req, res) {
+    try {
+      const feedbacks = await feedbackModel.find({
+        status: { $ne: "Suggestion" },
+      });
+
+      res.status(201).json(feedbacks);
+    } catch (err) {
+      res.status(401).json({ message: err.message });
+    }
+  }
 }
 
-export {FeedbackController}
+export { FeedbackController };

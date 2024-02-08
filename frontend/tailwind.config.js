@@ -14,7 +14,9 @@ module.exports = {
         "color-8": "#647196",
         "color-9": "#F49F85",
         "color-10": "#62BCFA",
-        "color-11": "#C75AF6"
+        "color-11": "#C75AF6",
+        "color-12": "#F2F4FE",
+        "color-13": "#CFD7FF",
       },
     },
   },

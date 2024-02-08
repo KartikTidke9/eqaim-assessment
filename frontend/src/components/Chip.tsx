@@ -5,7 +5,7 @@ type chipProps = {
 
 function Chip({ children, selected = false }: chipProps) {
   return selected ? (
-    <span className="text-center text-white bg-color-2 px-4 py-1 rounded-lg text-xs md:text-base">
+    <span className="px-4 py-1 text-xs text-center text-white rounded-lg bg-color-2 md:text-base">
       {children}
     </span>
   ) : (

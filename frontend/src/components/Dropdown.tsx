@@ -35,9 +35,9 @@ function Dropdown({
             <path
               d="M1 1l4 4 4-4"
               stroke="#4661E6"
-              stroke-width="2"
+              strokeWidth="2"
               fill="none"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             />
           </svg>
         ) : (
@@ -45,9 +45,9 @@ function Dropdown({
             <path
               d="M1 6l4-4 4 4"
               stroke="#4661E6"
-              stroke-width="2"
+              strokeWidth="2"
               fill="none"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             />
           </svg>
         )}
@@ -61,7 +61,7 @@ function Dropdown({
                 onClick={() => onItemClick(d)}
                 className="flex items-center justify-between px-4 py-3 font-bold hover:text-color-1 hover:cursor-pointer"
               >
-                <p className="select-none opacity-55">{d.label}</p>
+                <p className="select-none">{d.label}</p>
                 {selected.id === d.id && (
                   <p>
                     <svg
