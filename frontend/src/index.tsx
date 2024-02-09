@@ -9,6 +9,7 @@ import EditFeedback from "./pages/EditFeedback";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import FeedbackDetail from "./pages/FeedbackDetail";
+import Roadmap from "./pages/Roadmap";
 
 const router = createBrowserRouter([
   { path: "/", index: true, element: <App /> },
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
   { path: "/feedback/new", element: <NewFeedback /> },
   { path: "/feedback/:id", element: <FeedbackDetail /> },
   { path: "/feedback/edit", element: <EditFeedback /> },
+  { path: "/feedback/roadmap", element: <Roadmap /> },
 ]);
 
 const root = ReactDOM.createRoot(

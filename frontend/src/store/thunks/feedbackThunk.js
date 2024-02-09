@@ -18,7 +18,7 @@ const fetchFeedbacks = createAsyncThunk(
   async () => {
     try {
       const feedbacks = await feedback.get("/all/suggestion");
-
+      
       return feedbacks.data;
     } catch (e) {
       throw Error(e.response.data.message);

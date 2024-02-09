@@ -61,7 +61,7 @@ class FeedbackController {
         { new: true }
       );
 
-      res.status(201).json(updatedFeedback);
+      res.status(200).json(updatedFeedback);
     } catch (err) {
       res.status(401).json({ message: err.message });
     }
@@ -77,7 +77,7 @@ class FeedbackController {
       }
 
       const deletedFeedback = await feedbackModel.findByIdAndDelete(id);
-      res.status(201).json(deletedFeedback);
+      res.status(200).json(deletedFeedback);
     } catch (err) {
       res.status(401).json({ message: err.message });
     }
@@ -89,7 +89,7 @@ class FeedbackController {
       const { id } = req.params;
       const feedback = await feedbackModel.findById(id).populate("comments");
 
-      res.status(201).json(feedback);
+      res.status(200).json(feedback);
     } catch (err) {
       res.status(401).json({ message: err.message });
     }
@@ -101,7 +101,7 @@ class FeedbackController {
     try {
       const feedbacks = await feedbackModel.find({ status: "Suggestion" });
 
-      res.status(201).json(feedbacks);
+      res.status(200).json(feedbacks);
     } catch (err) {
       res.status(401).json({ message: err.message });
     }
@@ -115,7 +115,7 @@ class FeedbackController {
         status: { $ne: "Suggestion" },
       });
 
-      res.status(201).json(feedbacks);
+      res.status(200).json(feedbacks);
     } catch (err) {
       res.status(401).json({ message: err.message });
     }

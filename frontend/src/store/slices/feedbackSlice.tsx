@@ -2,6 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
   createFeedback,
   deleteFeedback,
+  fetchAllFeedbacks,
   fetchFeedbackDetails,
   fetchFeedbacks,
   updateFeedback,
@@ -43,10 +44,12 @@ export type TFeedbacks = {
 
 type InitialState = {
   feedbacks: TFeedbacks[] | [];
+  otherFeedbacks: TFeedbacks[] | [];
   activeFeedback: TFeedbacks | null;
 };
 
 const initialState: InitialState = {
+  otherFeedbacks: [],
   feedbacks: [],
   activeFeedback: null,
 };
@@ -91,6 +94,14 @@ const feedbackSlice = createSlice({
       fetchFeedbacks.fulfilled,
       (state, action: PayloadAction<TFeedbacks[]>) => {
         state.feedbacks = action.payload;
+      }
+    );
+
+    //load all the feedback without status suggestion
+    builder.addCase(
+      fetchAllFeedbacks.fulfilled,
+      (state, action: PayloadAction<TFeedbacks[]>) => {
+        state.otherFeedbacks = action.payload;
       }
     );
 

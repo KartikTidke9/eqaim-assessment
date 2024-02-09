@@ -1,17 +1,17 @@
 type propsType = {
   color: string;
   label: string;
-  status?: number;
+  count?: number;
 };
 
-function Status({ color, label, status }: propsType) {
+function Status({ color, label, count }: propsType) {
   return (
     <>
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex items-center justify-center gap-4">
         <div className={`rounded-full w-2 h-2 ${color}`} />
-        <label className="opacity-50">{label}</label>
+        <label className="text-color-7">{label}</label>
       </div>
-      <p className="font-bold opacity-50">{status}</p>
+      <p className="font-bold opacity-50">{count}</p>
     </>
   );
 }

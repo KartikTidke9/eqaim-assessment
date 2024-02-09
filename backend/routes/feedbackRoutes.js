@@ -13,9 +13,6 @@ router.put("/update/:id", FeedbackController.updateFeedback);
 //delete the feedback
 router.delete("/delete/:id", FeedbackController.deleteFeedback);
 
-//fetch feedback details
-router.get("/:id", FeedbackController.fetchFeedbackById);
-
 //load all feedback with status of suggestion
 router.get(
   "/all/suggestion",
@@ -24,5 +21,10 @@ router.get(
 
 //load all feedback without status of suggestion
 router.get("/all", FeedbackController.fetchFeedbacksWithoutStatusSuggestion);
+
+
+
+//fetch feedback details
+router.get("/:id", FeedbackController.fetchFeedbackById);
 
 export default router;
