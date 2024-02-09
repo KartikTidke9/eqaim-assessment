@@ -1,0 +1,271 @@
+[{
+  "_id": {
+    "$oid": "65c3c1d278719362d6a47731"
+  },
+  "title": "Add tags for solutions",
+  "description": "Easier to search for solutions based on a specific stack.",
+  "category": "Enhancement",
+  "status": "Suggestion",
+  "upvotes": 112,
+  "comments": [
+    {
+      "$oid": "65c3c64778719362d6a47749"
+    },
+    {
+      "$oid": "65c3c66178719362d6a4774c"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-02-07T17:45:54.011Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-07T18:05:21.020Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c3c25d78719362d6a47733"
+  },
+  "title": "Add a dark theme option",
+  "description": "It would help people with light sensitivities and who prefer dark mode.",
+  "category": "Feature",
+  "status": "Suggestion",
+  "upvotes": 99,
+  "comments": [
+    {
+      "$oid": "65c3c68178719362d6a4774f"
+    },
+    {
+      "$oid": "65c3c69b78719362d6a47752"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-02-07T17:48:13.310Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-07T18:06:19.838Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c3c2b478719362d6a47735"
+  },
+  "title": "Q&A within the challenge hubs",
+  "description": "Challenge-specific Q&A would make for easy reference.",
+  "category": "Feature",
+  "status": "Suggestion",
+  "upvotes": 65,
+  "comments": [
+    {
+      "$oid": "65c3c6d978719362d6a47755"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-02-07T17:49:40.008Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-07T18:07:21.838Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c3c2de78719362d6a47737"
+  },
+  "title": "Add image/video upload to feedback",
+  "description": "Images and screencasts can enhance comments on solutions.",
+  "category": "Enhancement",
+  "status": "Suggestion",
+  "upvotes": 51,
+  "comments": [
+    {
+      "$oid": "65c3c6f678719362d6a47758"
+    },
+    {
+      "$oid": "65c3c70078719362d6a4775b"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-02-07T17:50:22.888Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-07T18:08:00.408Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c3c30478719362d6a47739"
+  },
+  "title": "Ability to follow others",
+  "description": "Stay updated on comments and solutions other people post.",
+  "category": "Feature",
+  "status": "Suggestion",
+  "upvotes": 42,
+  "comments": [
+    {
+      "$oid": "65c3c71f78719362d6a4775e"
+    },
+    {
+      "$oid": "65c3c73578719362d6a47761"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-02-07T17:51:00.445Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-07T18:08:53.983Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c3c32778719362d6a4773b"
+  },
+  "title": "Preview images not loading",
+  "description": "Challenge preview images are missing when you apply a filter.",
+  "category": "Bug",
+  "status": "Suggestion",
+  "upvotes": 3,
+  "comments": [],
+  "createdAt": {
+    "$date": "2024-02-07T17:51:35.176Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-07T17:51:35.176Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c3c34d78719362d6a4773d"
+  },
+  "title": "More comprehensive reports",
+  "description": "It would be great to see a more detailed breakdown of solutions..",
+  "category": "Feature",
+  "status": "Planned",
+  "upvotes": 123,
+  "comments": [
+    {
+      "$oid": "65c3c76878719362d6a47764"
+    },
+    {
+      "$oid": "65c3c77678719362d6a47767"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-02-07T17:52:13.950Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-07T18:09:58.010Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c3c36f78719362d6a4773f"
+  },
+  "title": "Learning paths",
+  "description": "Sequenced projects for different goals to help people improve.",
+  "category": "Feature",
+  "status": "Planned",
+  "upvotes": 28,
+  "comments": [
+    {
+      "$oid": "65c3c79678719362d6a4776a"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-02-07T17:52:47.167Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-07T18:10:30.936Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c3c38378719362d6a47741"
+  },
+  "title": "One-click portfolio generation",
+  "description": "Add ability to create professional looking portfolio from profile.",
+  "category": "Feature",
+  "status": "In-Progress",
+  "upvotes": 62,
+  "comments": [
+    {
+      "$oid": "65c3c7b078719362d6a4776d"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-02-07T17:53:07.150Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-07T18:10:56.385Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c3c39178719362d6a47743"
+  },
+  "title": "Bookmark challenges",
+  "description": "Be able to bookmark challenges to take later on.",
+  "category": "Feature",
+  "status": "In-Progress",
+  "upvotes": 31,
+  "comments": [
+    {
+      "$oid": "65c3c7d178719362d6a47770"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-02-07T17:53:21.581Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-07T18:11:29.187Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c3c3a078719362d6a47745"
+  },
+  "title": "Animated solution screenshots",
+  "description": "Screenshots of solutions with animations don’t display correctly.",
+  "category": "Bug",
+  "status": "In-Progress",
+  "upvotes": 9,
+  "comments": [],
+  "createdAt": {
+    "$date": "2024-02-07T17:53:36.888Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-07T17:53:36.888Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c3c3ac78719362d6a47747"
+  },
+  "title": "Add micro-interactions",
+  "description": "Small animations at specific points can add delight.",
+  "category": "Enhancement",
+  "status": "Live",
+  "upvotes": 71,
+  "comments": [
+    {
+      "$oid": "65c3c7f678719362d6a47773"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-02-07T17:53:48.085Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-07T18:12:06.904Z"
+  },
+  "__v": 0
+}]
